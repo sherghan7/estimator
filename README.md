@@ -188,7 +188,7 @@ Contributions are welcome! To contribute:
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 📧 Contact
-For questions or support, please contact [sherghan7@example.com](mailto:sherghan7@example.com).
+For questions or support, please contact [sherghan7@gmail.com](mailto:sherghan7@gmail.com).
 
 ## 📸 Screenshots
 - Home Page

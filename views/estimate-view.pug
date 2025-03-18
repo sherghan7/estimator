@@ -1,0 +1,67 @@
+extends layout
+
+block content
+  section.estimate-view
+    .estimate-header
+      h2.section-title Estimate: #{estimate.title}
+      .estimate-actions
+        a.btn.btn-secondary(href=`/api/estimates/${estimate.id}/export/json`) Export JSON
+        a.btn.btn-secondary(href=`/api/estimates/${estimate.id}/export/excel`) Export Excel
+        a.btn.btn-primary(href="/create-estimate") Create New
+
+    .estimate-details
+      .estimate-info
+        .info-row
+          .info-label Client:
+          .info-value #{estimate.clientName}
+        .info-row
+          .info-label Date:
+          .info-value #{new Date(estimate.createdAt).toLocaleDateString()}
+        if estimate.description
+          .info-row
+            .info-label Description:
+            .info-value #{estimate.description}
+
+      .estimate-summary-box
+        .summary-row
+          .summary-label Total Hours:
+          .summary-value #{estimate.items.reduce((total, item) => total + item.hours, 0).toFixed(1)}
+        .summary-row
+          .summary-label Total Amount:
+          .summary-value $#{estimate.estimatedTotal.toFixed(2)}
+
+    .estimate-items
+      h3.subsection-title Service Items
+
+      table.estimate-table
+        thead
+          tr
+            th Service
+            th Sub-Service
+            th Contributor
+            th Hours
+            th Rate ($/hr)
+            th Amount
+        tbody
+          each item in estimate.items
+            tr
+              td #{item.service}
+              td #{item.subService}
+              td #{item.contributor}
+              td #{item.hours}
+              td $#{item.rate}
+              td $#{(item.hours * item.rate).toFixed(2)}
+
+          tr.total-row
+            td(colspan="4")
+            td Total:
+            td $#{estimate.estimatedTotal.toFixed(2)}
+
+      .estimate-notes
+        h3.subsection-title Notes
+        .notes-container
+          each item in estimate.items
+            if item.note
+              .note-item
+                strong #{item.service} - #{item.subService}:
+                p #{item.note}

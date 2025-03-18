@@ -1,0 +1,37 @@
+doctype html
+html
+  head
+    title #{title} | High-End Estimator
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap")
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap")
+    link(rel="stylesheet", href="/css/style.css")
+    link(rel="stylesheet", href="/css/animations.css")
+    block styles
+  body
+    header.header
+      .container
+        .logo
+          h1
+            span.primary-text ESTIMATOR
+            span.secondary-text 3000
+        nav.main-nav
+          ul
+            li
+              a(href="/") Home
+            li
+              a(href="/estimates") Estimates
+            li
+              a(href="/create-estimate") Create Estimate
+
+    main.main-content
+      .container
+        block content
+
+    footer.footer
+      .container
+        p © #{new Date().getFullYear()} High-End Estimator | Powered by Node.js
+
+    script(src="/js/main.js")
+    block scripts

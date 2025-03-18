@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  section.estimates-list
+    .estimates-header
+      h2.section-title Your Estimates
+      .estimates-actions
+        a.btn.btn-primary(href="/create-estimate") Create New Estimate
+
+    if estimates.length === 0
+      .no-estimates
+        p You haven't created any estimates yet.
+        a.btn.btn-secondary(href="/create-estimate") Create Your First Estimate
+    else
+      .estimate-grid
+        each estimate in estimates
+          .estimate-card
+            .estimate-card-header
+              h3.estimate-title #{estimate.title}
+              .estimate-amount $#{estimate.estimatedTotal.toFixed(2)}
+            .estimate-card-body
+              .estimate-info-item
+                span.info-label Client:
+                span.info-value #{estimate.clientName}
+              .estimate-info-item
+                span.info-label Created:
+                span.info-value #{new Date(estimate.createdAt).toLocaleDateString()}
+              .estimate-info-item
+                span.info-label Items:
+                span.info-value #{estimate.items.length}
+            .estimate-card-footer
+              a.btn.btn-secondary(href=`/estimates/${estimate.id}`) View Estimate

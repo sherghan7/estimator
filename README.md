@@ -190,10 +190,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## 📧 Contact
 For questions or support, please contact [sherghan7@gmail.com](mailto:sherghan7@gmail.com).
 
-## 📸 Screenshots
-- Home Page
-- Estimate Builder
-- Estimate View
-
 Built with ❤️ by Sher Ghan
 
